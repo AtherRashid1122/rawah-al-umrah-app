@@ -3,7 +3,10 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import React from 'react'
 import Button from '../../assets/components/Button'
 import colors from '../../theme/colors'
+import { useNavigation } from '@react-navigation/native'
+
 const WelcomeScreen = () => {
+    const navigation = useNavigation()
     return (
         <ImageBackground style={{ flex: 1 }}
             source={require('../../assets/images/backgroundimage.png')}
@@ -13,12 +16,17 @@ const WelcomeScreen = () => {
 
             </SafeAreaView>
             <SafeAreaView style={styles.main1} >
-                <Button />
+                <TouchableOpacity >
+                    <Button
+                        title="Book Transport"
+                        onPress={() => navigation.navigate('Home')}
+                    />
+                </TouchableOpacity>
                 <View style={styles.textview}>
                     <Text style={styles.text}>
                         Already have an Account ?
                     </Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('LoginScreen')}>
                         <Text style={styles.touchabletext}>
                             LOGIN
                         </Text>
@@ -28,7 +36,7 @@ const WelcomeScreen = () => {
                     <Text style={styles.text}>
                         Sign-Up as an Agent ?
                     </Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('RegisterScreen')}>
                         <Text style={styles.touchabletext}>
                             SIGN-UP
                         </Text>
